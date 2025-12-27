@@ -1,0 +1,28 @@
+{
+  "name": "discord-ai-agent",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "lint": "oxlint --tsconfig ./tsconfig.json --type-aware ./src",
+    "format": "oxfmt --write .",
+    "format:check": "oxfmt --check",
+    "dev": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "discord.js": "^14.25.1",
+    "neverthrow": "^8.2.0",
+    "ts-pattern": "^5.9.0",
+    "zod": "^4.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.3",
+    "oxfmt": "^0.20.0",
+    "oxlint": "^1.35.0",
+    "oxlint-tsgolint": "^0.10.0",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  },
+  "packageManager": "pnpm@10.9.0"
+}
