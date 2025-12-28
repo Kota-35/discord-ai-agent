@@ -6,6 +6,8 @@ import z from 'zod';
  */
 export const EnvSchema = z.object({
   DISCORD_BOT_TOKEN: z.string().describe('discord botのトークン'),
+
+  PORT: z.number().optional().default(3000).describe('サーバーのポート番号'),
 });
 
 export type Env = z.infer<typeof EnvSchema>;
