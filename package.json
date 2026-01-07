@@ -1,8 +1,8 @@
 {
   "name": "discord-ai-agent",
   "version": "1.0.0",
-  "main": "src/index.ts",
   "type": "module",
+  "main": "src/index.ts",
   "scripts": {
     "lint": "oxlint --tsconfig ./tsconfig.json --type-aware ./src",
     "format": "oxfmt --write .",
