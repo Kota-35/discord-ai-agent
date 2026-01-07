@@ -11,12 +11,19 @@ const GOURMET_SEARCH_API =
  */
 export const searchGourmet = ({
   keyword,
+  order,
 }: {
   keyword: string;
+  order?: '店名かな順' | 'ジャンルコード順' | '小エリアコード順' | 'おススメ順';
 }): ResultAsync<GourmetSearchShop[], Error> => {
   return ResultAsync.fromPromise(
     axios.get(GOURMET_SEARCH_API, {
-      params: { key: env.HOTPEPPER_GOURMET_API_KEY, format: 'json', keyword },
+      params: {
+        key: env.HOTPEPPER_GOURMET_API_KEY,
+        format: 'json',
+        keyword,
+        order,
+      },
     }),
     (error) => (error instanceof Error ? error : new Error(String(error)))
   ).andThen((response) => {

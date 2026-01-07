@@ -1,5 +1,5 @@
 import { ResultAsync } from 'neverthrow';
-import {initializeDiscordBot} from "@/features/discord"
+import { initializeDiscordBot } from '@/features/discord';
 
 const main = (): ResultAsync<string, Error> => {
   return initializeDiscordBot();
