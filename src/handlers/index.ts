@@ -1,4 +1,5 @@
 import './clientReady';
+import './messageCreate';
 import { ResultAsync } from 'neverthrow';
 import { discordClient } from '@/libs/discord';
 import { env } from '@/libs/env';
