@@ -9,7 +9,7 @@ export const EnvSchema = z.object({
 
   OPENAI_API_KEY: z.string().describe('OPENAIのAPIキー'),
 
-  HOTPEPPER_GOURMET_API_KEY: z.string().describe("HOT PEPPERグルメのAPIキー")
+  HOTPEPPER_GOURMET_API_KEY: z.string().describe('HOT PEPPERグルメのAPIキー'),
 });
 
 export type Env = z.infer<typeof EnvSchema>;
