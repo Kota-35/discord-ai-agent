@@ -2,6 +2,7 @@
   "editor.defaultFormatter": "oxc.oxc-vscode",
   "editor.formatOnSave": true,
   "cSpell.words": [
+    "HOTPEPPER",
     "neverthrow",
     "oxfmt",
     "oxlint",
