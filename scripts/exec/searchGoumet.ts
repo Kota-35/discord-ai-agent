@@ -1,14 +1,14 @@
-import { searchGourmet } from "@/libs/hotpepperGourmet/gourmetSearch";
-import { ok } from "neverthrow";
+import { ok } from 'neverthrow';
+import { searchGourmet } from '@/libs/hotpepperGourmet/gourmetSearch';
 
 searchGourmet({
-    keyword: "ラーメン"
+  keyword: 'ラーメン',
 })
-.andThen((data) => {
+  .andThen((data) => {
     console.info(data);
     // Return an Ok result to satisfy the andThen contract
     return ok(data);
-})
-.mapErr(error => {
+  })
+  .mapErr((error) => {
     console.error(error);
-});
+  });
