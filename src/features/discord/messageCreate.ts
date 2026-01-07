@@ -1,7 +1,7 @@
 import { gourmetSearchAgent } from '@/features/mastra/agents/gourmetSearchAgent';
 import { discordClient } from '@/libs/discord';
 
-discordClient.once('messageCreate', async (message) => {
+discordClient.on('messageCreate', async (message) => {
   console.info('✅ messageCreate');
 
   // メッセージの送信者がbotなら無視
