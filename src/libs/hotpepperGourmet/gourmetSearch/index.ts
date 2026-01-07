@@ -1,20 +1,27 @@
-import { err, ok, ResultAsync } from 'neverthrow';
-import { GourmetSearchResponseSchema, type GourmetSearchShop } from './types';
 import axios from 'axios';
+import { err, ok, ResultAsync } from 'neverthrow';
 import { env } from '@/libs/env';
+import { GourmetSearchResponseSchema, type GourmetSearchShop } from './types';
 
-const GOURMET_SEARCH_API = "http://webservice.recruit.co.jp/hotpepper/gourmet/v1/"
+const GOURMET_SEARCH_API =
+  'http://webservice.recruit.co.jp/hotpepper/gourmet/v1/';
 
 /**
  * HOT PEPPERグルメAPIを使用して、指定したキーワードで飲食店を検索
  */
-export const searchGourmet = ({keyword}: {keyword: string}): ResultAsync<GourmetSearchShop[], Error> => {
+export const searchGourmet = ({
+  keyword,
+}: {
+  keyword: string;
+}): ResultAsync<GourmetSearchShop[], Error> => {
   return ResultAsync.fromPromise(
-    axios.get(GOURMET_SEARCH_API, {params: {key: env.HOTPEPPER_GOURMET_API_KEY, format: "json", keyword}}),
-    (error) => error instanceof Error ? error : new Error(String(error))
+    axios.get(GOURMET_SEARCH_API, {
+      params: { key: env.HOTPEPPER_GOURMET_API_KEY, format: 'json', keyword },
+    }),
+    (error) => (error instanceof Error ? error : new Error(String(error)))
   ).andThen((response) => {
-    const parsed = GourmetSearchResponseSchema.safeParse(response.data)
+    const parsed = GourmetSearchResponseSchema.safeParse(response.data);
 
-    return parsed.success ? ok(parsed.data.results.shop) : err(parsed.error)
-  })
+    return parsed.success ? ok(parsed.data.results.shop) : err(parsed.error);
+  });
 };
