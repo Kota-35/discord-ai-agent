@@ -2,7 +2,6 @@ import '@/handlers/clientReady';
 import { ResultAsync } from 'neverthrow';
 import { discordClient } from '@/libs/discord';
 import { env } from '@/libs/env';
-import { startServer } from '@/server';
 
 const setupErrorHandlers = (): void => {
   discordClient.on('error', (error) => {
@@ -28,20 +27,15 @@ const loginBot = (token: string): ResultAsync<string, Error> =>
     error instanceof Error ? error : new Error(String(error))
   ).mapErr((e) => e);
 
-const main = (): ResultAsync<[string, void], Error> => {
+const main = (): ResultAsync<string, Error> => {
   setupErrorHandlers();
 
-  const botLogin = loginBot(env.DISCORD_BOT_TOKEN);
-  const server = startServer();
-
-  return ResultAsync.combine([botLogin, server]);
+  return loginBot(env.DISCORD_BOT_TOKEN);
 };
 
 main()
-  .map(([token, _]) => {
+  .map(() => {
     console.info('✅ Botが正常にログインしました');
-    console.info('✅ すべてのサービスが起動しました');
-    return token;
   })
   .mapErr((error) => {
     console.error(`❌ 起動に失敗しました: ${error.message}`);
