@@ -1,0 +1,1 @@
+export { searchGourmet } from './gourmetSearch';
