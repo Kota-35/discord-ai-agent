@@ -96,18 +96,21 @@ export const gourmetSearchTool = new Tool({
   }),
   outputSchema: z.array(GourmetSearchShopSchema),
   execute: async ({ context }) => {
-    const { keyword, order, largeServiceArea, serviceArea } = context;
+    const { keyword, order, largeServiceArea } = context;
+
+    console.info('✅パラメーター\n', context);
 
     const result = await searchGourmet({
       keyword,
       order,
       largeServiceArea,
-      serviceArea,
     });
 
     if (result.isErr()) {
       throw result.error;
     }
+
+    console.info('✅検索結果\n', result.value);
 
     return result.value;
   },
