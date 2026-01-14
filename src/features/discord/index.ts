@@ -14,7 +14,7 @@ const setupErrorHandlers = (): void => {
   });
 
   process.on('SIGINT', async () => {
-    console.info('Botをシャットダウンしています...');
+    console.info('\nBotをシャットダウンしています...');
     discordClient.destroy();
     process.exit(0);
   });
